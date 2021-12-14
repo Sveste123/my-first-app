@@ -34,11 +34,11 @@
 <style>
 
 	main {
-		margin: 150px;
+		margin: 15px;
 	}
 
 	h1 {
-		font-size: 72px;
+		font-size: 50px;
 		background: -webkit-linear-gradient(#4169e1, #ff0000);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
