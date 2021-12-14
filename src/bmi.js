@@ -6,25 +6,28 @@ export class bmiCalculator {
         if (bmi > 25) {
             return "red";
         }
-        else if (bmi < 25 && bmi > 18.5) {
-            return "green";
+        else if (bmi <= 25 && bmi >= 18.5) {
+            return "lightgreen";
         }
-        else return "yellow";
+        else return "#9B9B00";
         
     }
 
     findText(bmi) {
         if (bmi > 25) {
-            return "Du kan spise mindre bacon";
+            return "Du kan spise mindre bacon.";
         }
-        else if (bmi < 25 && bmi > 18.5) {
-            return "Du er innafor";
+        else if (bmi <= 25 && bmi >= 18.5) {
+            return "Du er innafor!";
         }
-        else return "Du kan spise mer ribbe";
+        else return "Du kan spise mer ribbe.";
     }
 
     calculate(height, weight) {
-        const value = weight / (0.01*height^2);
+        const meters = height/100;
+        const value = weight / (meters*meters);
+
+        console.log(weight, height, value, meters);
         return {
             bmi: value,
             color: this.findColor(value),
