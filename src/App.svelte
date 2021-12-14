@@ -1,11 +1,13 @@
 <script>
-	let bmi;
+	import {bmiCalculator} from "./bmi.js"
+
+	let result;
 	let height;
 	let weight;
-	export let name;
-
+	let bmiCalc = new bmiCalculator();
+	
 	function buttonClick() {
-	bmi=weight/((height/100)^2);
+		result = bmiCalc.calculate(height, weight);
 	}
 </script>
 <main>
@@ -21,17 +23,11 @@
 	</div>
 	<button on:click="{buttonClick}">Kalkuler BMI´en min</button>
 	
-	<div>
-		{#if bmi>25}
-		<h3>Din BMI er {bmi}</h3>
-		Du er for feit.
-		{:else if bmi<18.5}
-		<h2>Din BMI er {bmi}</h2>
-		Du er for tynn.
-		{:else if bmi>18.5 && bmi<25}
-		<h4>Din BMI er {bmi}</h4>
-		Din vekt er innafor.
-		{/if}
+	<div>	
+		{#if result}	
+		<div class="result" style="color:{result.color};">Din BMI er {result.bmi}</div>
+		<div>{result.text}</div>
+		{/if}		
 	</div>
 
 </main>
@@ -48,21 +44,10 @@
 		-webkit-text-fill-color: transparent;
 	}
 
-	h2 {
+	.result {
 		font-size: 30px;
-		color: yellow;
 	}
 	
-	h3 {
-		font-size: 30px;
-		color: red;
-	}
-
-	h4 {
-		font-size: 30px;
-		color: green;
-	}
-
 	p {
 		font-size: 20px;
 		color: black;
